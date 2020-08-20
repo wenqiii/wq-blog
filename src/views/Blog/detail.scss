@@ -1,0 +1,27 @@
+.blog-detail {
+    position: relative;
+    width: 1070px;
+    height: calc(100vh - 100px);
+    margin: 20px auto 0;
+    overflow: auto;
+    background: #f4f5f5;
+    .article {
+        width: 700px;
+        padding: 20px;
+        margin-right: 20px;
+        box-sizing: border-box;
+        background: #fff;
+        .content {
+            padding-top: 10px;
+        }
+    }
+    .catalog {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 350px;
+        .content {
+            background: #fff;
+        }
+    }
+}

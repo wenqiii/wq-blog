@@ -1,0 +1,47 @@
+.header {
+    width: calc(100vw);
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #1673fe;
+    .container {
+        /* width: 80%; */
+        max-width: 1000px;
+        display: flex;
+        justify-content: space-between;
+        height: 80px;
+        margin: 0 auto;
+    }
+    .user {
+        display: flex;
+        margin-top: 10px;
+        margin-left: 10px;
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        h1 {
+            line-height: 40px;
+            margin: 0;
+            font-size: 28px;
+        }
+        p {
+            margin: 0;
+            font-size: 14px;
+        }
+    }
+    .menu {
+        list-style: none;
+        height: 80px;
+        li {
+            display: inline-block;
+            line-height: 80px;
+            padding: 0 20px;
+        }
+    }
+}
