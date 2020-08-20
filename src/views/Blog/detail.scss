@@ -1,14 +1,9 @@
 .blog-detail {
     position: relative;
-    width: 1070px;
-    height: calc(100vh - 100px);
     margin: 20px auto 0;
-    overflow: auto;
     background: #f4f5f5;
     .article {
-        width: 700px;
         padding: 20px;
-        margin-right: 20px;
         box-sizing: border-box;
         background: #fff;
         .content {
@@ -20,8 +15,43 @@
         top: 0;
         right: 0;
         width: 350px;
+        padding: 20px 10px;
+        box-sizing: border-box;
+        content {
+            // height: 800px;
+            // overflow: auto;
+        }
+    }
+    .is-fixed {
         .content {
-            background: #fff;
+            position: fixed;
+            top: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 1070px) {
+    .blog-detail {
+        width: 100%;
+        .article {
+            width: 90%;
+            margin: 0 auto;
+        }
+        .catalog {
+            display: none;
+        }
+    }
+}
+
+@media screen and (min-width: 1070px) {
+    .blog-detail {
+        width: 1070px;
+        .article {
+            width: 700px;
+            margin-right: 20px;
+        }
+        .catalog {
+            display: block;
         }
     }
 }

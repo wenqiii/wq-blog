@@ -5,6 +5,10 @@ import "react-markdown-editor-lite/lib/index.css";
 import MarkNav from "markdown-navbar";
 import "markdown-navbar/dist/navbar.css";
 import "./detail.scss";
+import store from "../../store";
+import { observer } from "mobx-react";
+
+import { Anchor } from "antd";
 
 const mdParser = new MarkdownIt({
   html: true,
@@ -18,12 +22,14 @@ const text = {
     : "",
 };
 
+@observer // 使class变成响应式
 class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       blog: {},
     };
+    this.myDetail = React.createRef();
   }
 
   componentWillMount() {
@@ -36,7 +42,7 @@ class Detail extends React.Component {
 
   render() {
     return (
-      <div className="blog-detail">
+      <div className="blog-detail" ref={this.myDetail}>
         <div className="article">
           <h1>{this.state.blog.title.slice(0, -3)}</h1>
           <div
@@ -44,14 +50,13 @@ class Detail extends React.Component {
             dangerouslySetInnerHTML={text}
           ></div>
         </div>
-        <div className="catalog">
+        <div className={store.top < -100 ? "catalog is-fixed" : "catalog"}>
           <div className="content">
             <div className="markNav-title">文章目录</div>
             <MarkNav
               className="article-menu"
               source={JSON.parse(window.localStorage.blog).text}
-              declarative={true}
-              headingTopOffset={80}
+              headingTopOffset={-20}
             />
           </div>
         </div>

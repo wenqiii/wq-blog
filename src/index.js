@@ -1,50 +1,51 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Header from "./components/header";
+import Header from "./components/Header";
 import About from "./views/About";
 import CreateBlog from "./views/CreateBlog";
 import Blog from "./views/Blog";
 import Detail from "./views/Blog/detail";
 import "./index.scss";
+import "antd/dist/antd.css";
 
 import store from "./store";
+import { observer } from "mobx-react";
 
+@observer
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.prevScrollTop = "";
-    this.state = {
-      isHidden: false,
-    };
+    this.prevTop = "";
     this.myApp = React.createRef();
   }
 
   handleScroll(e) {
-    if (!this.prevScrollTop) {
-      this.prevScrollTop = e.target.scrollTop;
+    const node = this.myApp.current;
+    let nodeInfo = node.getBoundingClientRect();
+    if (!this.prevTop) {
+      this.prevTop = nodeInfo.top;
+      store.changeTop(nodeInfo.top);
     } else {
-      this.setState({
-        isHidden: e.target.scrollTop - this.prevScrollTop > 0 ? true : false,
-      });
-      this.prevScrollTop = "";
+      let status = nodeInfo.top - this.prevTop < 0 ? true : false;
+      store.changeHeaderStatus(status);
+      store.changeTop(nodeInfo.top);
+      this.prevTop = "";
     }
   }
   componentDidMount() {
-    console.log(store, store.isHidden);
-    const node = this.myApp.current;
-    node.addEventListener("scroll", (e) => this.handleScroll(e));
+    window.addEventListener("scroll", (e) => this.handleScroll(e));
   }
 
   componentWillUnmount() {
     const node = this.myApp.current;
-    node.removeEventListener("scroll", (e) => this.handleScroll(e));
+    window.removeEventListener("scroll", (e) => this.handleScroll(e));
   }
 
   render() {
     return (
       <div className="app" ref={this.myApp}>
-        <Header isHidden={this.state.isHidden} />
+        <Header isHidden={store.isHidden} />
         <div className="fixedH"></div>
         <Switch>
           <Route path="/blog" component={Blog} />

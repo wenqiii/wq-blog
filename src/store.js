@@ -1,15 +1,20 @@
 import { observable, action } from "mobx";
 
-// const appStore = ({
-//   isHidden: "",
-// });
-
 class appStore {
-  @observable isHidden = "";
-  @action
+  @observable isHidden = false;
+  @observable top = 0;
+
+  @action.bound
   changeHeaderStatus(status) {
     this.isHidden = status;
   }
+
+  @action.bound
+  changeTop(top) {
+    this.top = top;
+  }
 }
 
-export default appStore;
+const store = new appStore();
+
+export default store;
