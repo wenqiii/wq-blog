@@ -1,14 +1,17 @@
 import React from "react";
 import MarkdownIt from "markdown-it";
-import BlogList from "../../mock/blogs.json";
+// import BlogList from "../../mock/blogs.json";
+import { Spin } from "antd";
+import loadingIcon from "../../components/LoadingIcon";
+import { getBlogDetail } from "../../api/index";
+
 import "react-markdown-editor-lite/lib/index.css";
 import MarkNav from "markdown-navbar";
 import "markdown-navbar/dist/navbar.css";
 import "./detail.scss";
+
 import store from "../../store";
 import { observer } from "mobx-react";
-
-import { Anchor } from "antd";
 
 const mdParser = new MarkdownIt({
   html: true,
@@ -16,51 +19,60 @@ const mdParser = new MarkdownIt({
   typographer: true,
 });
 
-const text = {
-  __html: window.localStorage.blog
-    ? mdParser.render(JSON.parse(window.localStorage.blog).text)
-    : "",
-};
-
 @observer // 使class变成响应式
 class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       blog: {},
+      spinning: true,
     };
     this.myDetail = React.createRef();
   }
 
   componentWillMount() {
-    this.setState({
-      blog: BlogList.list.filter(
-        (blog) => blog.blog_id == this.props.match.params.id
-      )[0],
+    getBlogDetail({ id: this.props.match.params.id }).then((res) => {
+      this.setState({
+        blog: res,
+        spinning: false,
+      });
     });
+    // this.setState({
+    //   blog: {
+    //     body: window.localStorage.blog
+    //       ? JSON.parse(window.localStorage.blog).text
+    //       : "",
+    //   },
+    // });
   }
 
   render() {
     return (
-      <div className="blog-detail" ref={this.myDetail}>
-        <div className="article">
-          <h1>{this.state.blog.title.slice(0, -3)}</h1>
-          <div
-            className="custom-html-style content"
-            dangerouslySetInnerHTML={text}
-          ></div>
-        </div>
-        <div className={store.top < -100 ? "catalog is-fixed" : "catalog"}>
-          <div className="content">
-            <div className="markNav-title">文章目录</div>
-            <MarkNav
-              className="article-menu"
-              source={JSON.parse(window.localStorage.blog).text}
-              headingTopOffset={-20}
-            />
+      <Spin spinning={this.state.spinning} indicator={loadingIcon}>
+        <div className="blog blog-detail" ref={this.myDetail}>
+          <div className="article">
+            <h1>{this.state.blog.title}</h1>
+            <div
+              className="custom-html-style content"
+              dangerouslySetInnerHTML={{
+                __html: this.state.blog.body
+                  ? mdParser.render(this.state.blog.body)
+                  : "",
+              }}
+            ></div>
+          </div>
+          <div className={store.top < -100 ? "catalog is-fixed" : "catalog"}>
+            <div className="content">
+              <div className="markNav-title">文章目录</div>
+              <MarkNav
+                className="article-menu"
+                source={this.state.blog.body}
+                headingTopOffset={-20}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </Spin>
     );
   }
 }

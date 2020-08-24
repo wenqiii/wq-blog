@@ -6,6 +6,8 @@ import About from "./views/About";
 import CreateBlog from "./views/CreateBlog";
 import Blog from "./views/Blog";
 import Detail from "./views/Blog/detail";
+import Images from "./utils/getImage";
+import axios from "axios";
 import "./index.scss";
 import "antd/dist/antd.css";
 
@@ -18,6 +20,7 @@ class App extends React.Component {
     super(props);
     this.prevTop = "";
     this.myApp = React.createRef();
+    this.bgImg = Images[Math.floor(Math.random() * 5)];
   }
 
   handleScroll(e) {
@@ -34,25 +37,43 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
+    axios
+      .get("https://v2.jinrishici.com/one.json")
+      .then((res) => {
+        console.log(res, "response");
+        store.changePoetry({
+          ...res.data.data.origin,
+          content: res.data.data.content,
+        });
+      })
+      .catch((err) => {
+        store.changePoetry({});
+      });
+
     window.addEventListener("scroll", (e) => this.handleScroll(e));
   }
 
   componentWillUnmount() {
-    const node = this.myApp.current;
     window.removeEventListener("scroll", (e) => this.handleScroll(e));
   }
 
   render() {
     return (
       <div className="app" ref={this.myApp}>
-        <Header isHidden={store.isHidden} />
+        <div
+          className="cover-bg"
+          style={{ backgroundImage: `url(${this.bgImg})` }}
+        ></div>
+        <Header
+          isHidden={store.isHidden}
+          currentTab={this.props.location.pathname.slice(1)}
+        />
         <div className="fixedH"></div>
         <Switch>
           <Route path="/blog" component={Blog} />
           <Route path="/blog-detail/:id" component={Detail} />
           <Route path="/about" component={About} />
         </Switch>
-        {this.props.children}
       </div>
     );
   }
