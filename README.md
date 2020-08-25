@@ -1,68 +1,35 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 前言
+用React搭建了一个属于自己的博客系统，最初目的是为了熟悉React框架，同时也是为了激励自己不断学习。[点击预览](https://wenqiii.github.io/wq-blog/)
 
-## Available Scripts
+## 项目
+### 所用技术栈
+React + MobX + React Router + Axios + AntDesign + Sass
+### TodoList
+- [x] markdownIt渲染md
+- [x] GitHub Issues作为数据源
+- [x] React Router管理路由
+- [x] MobX管理数据
+- [x] 代码高亮
+- [x] 文章目录及点击跳转
+- [x] 上滑隐藏头部，下滑显示头部
+- [x] 分类
+- [x] 每日一诗
+- [ ] 回到顶部
+- [ ] 使用Hook代替class
+- [ ] 项目构建优化
+- [ ] CSS In Js
+- [ ] 后台管理
 
-In the project directory, you can run:
+## 问题记录
+- 使用插件markdownNavbar生成的文章目录导航不起作用，查看源码发现是其内部使用到window.scrollTo，而我文章页面固定了高度，以致未生效。
+- 开发项目时就在思考项目数据源怎么获得，想自己开发一个后台，又觉得可能要花很长时间，而自己的初衷只是为了练习React，所以最终参考了别人项目的实现方式，采用了GitHub Issues作为数据源。
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## 参考链接
+- 项目1，https://juejin.im/post/6844904020859944974
+- 项目2，https://github.com/axuebin/react-blog
+- [react-markdown-editor-lite](https://github.com/HarryChen0506/react-markdown-editor-lite/blob/master/docs/configure.zh-CN.md)
+- [markdown-it](https://markdown-it.docschina.org/#%E5%AE%89%E8%A3%85)
+- [markdown-navbar](https://github.com/parksben/markdown-navbar)
+- [highlight.js](https://github.com/highlightjs/highlight.js)
+- [GitHub Issues](https://docs.github.com/en/rest/reference/issues#list-repository-issues)
