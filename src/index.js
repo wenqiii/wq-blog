@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import About from "./views/About";
 import CreateBlog from "./views/CreateBlog";
@@ -37,6 +37,7 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
+    this.props.history.push("/blog");
     axios
       .get("https://v2.jinrishici.com/one.json")
       .then((res) => {
@@ -58,6 +59,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props, "this.props");
     return (
       <div className="app" ref={this.myApp}>
         <div
@@ -80,11 +82,11 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <Switch>
       <Route path="/create" component={CreateBlog} />
       <Route path="/" component={App} />
     </Switch>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById("root")
 );
