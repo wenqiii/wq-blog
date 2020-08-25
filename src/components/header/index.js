@@ -38,8 +38,11 @@ function User() {
 class Header extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props, "pppp");
     this.state = {
-      currentTab: props.currentTab[0].toUpperCase() + props.currentTab.slice(1),
+      currentTab: props.currentTab
+        ? props.currentTab[0].toUpperCase() + props.currentTab.slice(1)
+        : "Blog",
     };
   }
 
