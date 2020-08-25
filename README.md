@@ -26,8 +26,8 @@ React + MobX + React Router + Axios + AntDesign + Sass
 
 
 ## 参考链接
-- 项目1，https://juejin.im/post/6844904020859944974
-- 项目2，https://github.com/axuebin/react-blog
+- https://juejin.im/post/6844904020859944974
+- https://github.com/axuebin/react-blog
 - [react-markdown-editor-lite](https://github.com/HarryChen0506/react-markdown-editor-lite/blob/master/docs/configure.zh-CN.md)
 - [markdown-it](https://markdown-it.docschina.org/#%E5%AE%89%E8%A3%85)
 - [markdown-navbar](https://github.com/parksben/markdown-navbar)
