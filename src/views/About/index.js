@@ -29,6 +29,7 @@ export default class About extends React.Component {
               onClick={() =>
                 (window.location.href = "https://github.com/wenqiii")
               }
+              alt="github"
             />
           </div>
           <div className="juejin">
@@ -38,6 +39,7 @@ export default class About extends React.Component {
                 (window.location.href =
                   "https://juejin.im/user/1204720474010701")
               }
+              alt="juejin"
             />
           </div>
         </div>

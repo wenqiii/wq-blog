@@ -9,6 +9,8 @@ import "react-markdown-editor-lite/lib/index.css";
 import MarkNav from "markdown-navbar";
 import "markdown-navbar/dist/navbar.css";
 import "./detail.scss";
+import hljs from "highlight.js";
+import "highlight.js/styles/atom-one-light.css";
 
 import store from "../../store";
 import { observer } from "mobx-react";
@@ -44,6 +46,19 @@ class Detail extends React.Component {
     //       : "",
     //   },
     // });
+  }
+
+  componentDidMount() {
+    this.updateCodeSyntaxHighlighting();
+  }
+  componentDidUpdate() {
+    this.updateCodeSyntaxHighlighting();
+  }
+
+  updateCodeSyntaxHighlighting() {
+    document.querySelectorAll("pre code").forEach((block) => {
+      hljs.highlightBlock(block);
+    });
   }
 
   render() {

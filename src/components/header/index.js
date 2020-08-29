@@ -12,7 +12,7 @@ const menu = [
 function User() {
   return (
     <div className="user">
-      <img src={avatar} className="avatar" />
+      <img src={avatar} className="avatar" alt="avatar" />
       <div>
         <h1>wenqi</h1>
         <p>唯一的限制是你的想象力</p>

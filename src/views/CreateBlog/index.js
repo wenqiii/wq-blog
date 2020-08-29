@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Editor from "../../components/Editor/index";
 import avatar from "../../assets/imgs/1.jpg";
 import "./index.scss";
+import hljs from "highlight.js";
+import "highlight.js/styles/atom-one-light.css";
 
 function EditorHeader(props) {
   return (
@@ -22,7 +24,7 @@ function EditorHeader(props) {
           发布
         </button>
         <Link to="/about">
-          <img src={props.user.avatar} className="avatar" />
+          <img src={props.user.avatar} className="avatar" alt="avatar" />
         </Link>
       </div>
     </div>
@@ -39,6 +41,19 @@ class CreateBlog extends React.Component {
         content: "",
       },
     };
+  }
+
+  componentDidMount() {
+    this.updateCodeSyntaxHighlighting();
+  }
+  componentDidUpdate() {
+    this.updateCodeSyntaxHighlighting();
+  }
+
+  updateCodeSyntaxHighlighting() {
+    document.querySelectorAll("pre code").forEach((block) => {
+      hljs.highlightBlock(block);
+    });
   }
 
   handleInput(e) {
