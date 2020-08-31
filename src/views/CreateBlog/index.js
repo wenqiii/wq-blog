@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import Editor from "../../components/Editor/index";
 import avatar from "../../assets/imgs/1.jpg";
 import "./index.scss";
-import hljs from "highlight.js";
-import "highlight.js/styles/atom-one-light.css";
+import hljs from "highlight.js/lib/core";
+import "highlight.js/styles/zenburn.css";
+import javascript from "highlight.js/lib/languages/javascript";
+import css from "highlight.js/lib/languages/css";
+hljs.registerLanguage("javascript", javascript);
+hljs.registerLanguage("css", css);
 
 function EditorHeader(props) {
   return (

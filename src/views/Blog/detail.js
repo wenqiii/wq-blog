@@ -5,15 +5,17 @@ import { Spin } from "antd";
 import loadingIcon from "../../components/LoadingIcon";
 import { getBlogDetail } from "../../api/index";
 
-import "react-markdown-editor-lite/lib/index.css";
 import MarkNav from "markdown-navbar";
 import "markdown-navbar/dist/navbar.css";
 import "./detail.scss";
-import hljs from "highlight.js";
-import "highlight.js/styles/atom-one-light.css";
-
 import store from "../../store";
 import { observer } from "mobx-react";
+import hljs from "highlight.js/lib/core";
+import javascript from "highlight.js/lib/languages/javascript";
+import css from "highlight.js/lib/languages/css";
+import "highlight.js/styles/vs2015.css";
+hljs.registerLanguage("javascript", javascript);
+hljs.registerLanguage("css", css);
 
 const mdParser = new MarkdownIt({
   html: true,
@@ -68,7 +70,7 @@ class Detail extends React.Component {
           <div className="article">
             <h1>{this.state.blog.title}</h1>
             <div
-              className="custom-html-style content"
+              className="markdown-style content"
               dangerouslySetInnerHTML={{
                 __html: this.state.blog.body
                   ? mdParser.render(this.state.blog.body)

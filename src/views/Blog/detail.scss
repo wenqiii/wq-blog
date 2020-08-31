@@ -33,4 +33,114 @@
             width: 330px;
         }
     }
+    .markdown-style {
+        color: #333;
+    }
+    .markdown-style h1 {
+        font-size: 32px;
+        padding: 0;
+        border: none;
+        font-weight: 700;
+        margin: 32px 0;
+        line-height: 1.2;
+    }
+    .markdown-style h2 {
+        font-size: 24px;
+        padding: 0 0;
+        border: none;
+        font-weight: 700;
+        margin: 24px 0;
+        line-height: 1.7;
+    }
+    .markdown-style h3 {
+        font-size: 18px;
+        margin: 18px 0;
+        padding: 0 0;
+        line-height: 1.7;
+        border: none;
+    }
+    .markdown-style p {
+        font-size: 14px;
+        line-height: 1.7;
+        margin: 8px 0;
+    }
+    .markdown-style a {
+        color: #0052d9;
+    }
+    .markdown-style a:hover {
+        text-decoration: none;
+    }
+    .markdown-style strong {
+        font-weight: 700;
+    }
+    .markdown-style ol,
+    .markdown-style ul {
+        font-size: 14px;
+        line-height: 28px;
+        padding-left: 36px;
+    }
+    .markdown-style li {
+        margin-bottom: 8px;
+        line-height: 1.7;
+    }
+    .markdown-style hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0;
+        border-top: 1px solid #eee;
+    }
+    .markdown-style blockquote {
+        position: relative;
+        margin: 16px 0;
+        padding: 5px 8px 5px 30px;
+        background: none repeat scroll 0 0 rgba(102, 128, 153, 0.05);
+        border: none;
+        color: #333;
+        border-left: 10px solid #d6dbdf;
+    }
+    .markdown-style img,
+    .markdown-style video {
+        max-width: 100%;
+    }
+    .markdown-style table {
+        font-size: 14px;
+        line-height: 1.7;
+        max-width: 100%;
+        overflow: auto;
+        border: 1px solid #f6f6f6;
+        border-collapse: collapse;
+        border-spacing: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .markdown-style table td,
+    .markdown-style table th {
+        word-break: break-all;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+    .markdown-style table tr {
+        border: 1px solid #efefef;
+    }
+    .markdown-style table tr:nth-child(2n) {
+        background-color: transparent;
+    }
+    .markdown-style table th {
+        text-align: center;
+        font-weight: 700;
+        border: 1px solid #efefef;
+        padding: 10px 6px;
+        background-color: #f5f7fa;
+        word-break: break-word;
+    }
+    .markdown-style table td {
+        border: 1px solid #efefef;
+        text-align: left;
+        padding: 10px 15px;
+        word-break: break-word;
+        min-width: 60px;
+    }
+    .hljs {
+        padding: 1em;
+    }
 }

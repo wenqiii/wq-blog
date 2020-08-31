@@ -8,6 +8,7 @@ import Blog from "./views/Blog";
 import Detail from "./views/Blog/detail";
 import Images from "./utils/getImage";
 import axios from "axios";
+
 import "./index.scss";
 import "antd/dist/antd.css";
 
