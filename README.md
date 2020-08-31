@@ -16,7 +16,7 @@ React + MobX + React Router + Axios + AntDesign + Sass
 - [x] 每日一诗
 - [ ] 回到顶部
 - [ ] 使用Hook代替class
-- [ ] 项目构建优化
+- [x] 项目构建优化
 - [ ] CSS In Js
 - [ ] 后台管理
 
