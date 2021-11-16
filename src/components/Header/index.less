@@ -9,6 +9,7 @@
   .container {
     max-width: 1090px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     height: 80px;
     margin: 0 auto;
@@ -34,25 +35,25 @@
       font-size: 14px;
     }
   }
+
   .menu {
     background: transparent;
     border-bottom: none;
-    padding-top: 17px;
-  }
-  /deep/ .ant-menu-item-selected,
-  .ant-menu-item-active {
-    border-bottom: 2px solid #fc6404 !important;
-  }
-  /deep/ .ant-menu-horizontal {
-    .ant-menu-item a {
-      color: #fff;
-      &:hover {
+    :global {
+      .ant-menu-item-selected::after,
+      .ant-menu-item-active::after {
+        display: none;
+      }
+      .ant-menu-item a {
+        color: #fff;
+        &:hover {
+          color: #fc6404;
+        }
+      }
+      .ant-menu-item-active a,
+      .ant-menu-item-selected a {
         color: #fc6404;
       }
-    }
-    .ant-menu-item-active a,
-    .ant-menu-item-selected a {
-      color: #fc6404;
     }
   }
 }
