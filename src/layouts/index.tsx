@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useScroll } from 'ahooks';
 import { useDispatch, useLocation, useSelector } from 'umi';
 
@@ -29,7 +29,7 @@ export default function BlogLayout(props: { children: React.ReactNode }) {
         payload: top,
       });
     } else {
-      const status = top - prevTop < 0 ? true : false;
+      const status = top - prevTop < 0 ? false : true; // <0代表上滑，需展示
       dispatch({
         type: 'global/changeTop',
         payload: top,
@@ -41,11 +41,15 @@ export default function BlogLayout(props: { children: React.ReactNode }) {
     }
   }, [windowScrollInfo]);
 
+  const isBlogPage = useMemo(() => {
+    return pathname.includes('/blog');
+  }, [pathname]);
+
   return (
     <div className={ss.blogLayout}>
       <Header />
       <div className={ss.content}>{children}</div>
-      {pathname.includes('/blog') && (
+      {isBlogPage && (
         <div
           className={ss.coverBg}
           style={{ backgroundImage: `url(${bgImg})` }}

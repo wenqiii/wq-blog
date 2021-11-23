@@ -4,7 +4,7 @@ const model: Model = {
   namespace: 'global',
   state: {
     top: 0,
-    isHidden: 'false',
+    isHidden: false,
   },
   effects: {
     // *changeTop({ payload }, { put }) {
@@ -16,9 +16,9 @@ const model: Model = {
     // },
   },
   reducers: {
-    // changeHeaderStatus(store, { payload }) {
-    //   store.isHidden = payload;
-    // },
+    changeHeaderStatus(store, { payload }) {
+      store.isHidden = payload;
+    },
     changeTop(store, data) {
       console.log('store, data: ', store, data);
       store.top = data.payload;

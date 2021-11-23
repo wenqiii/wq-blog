@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Link } from 'umi';
+import { Link, useSelector } from 'umi';
 import { Menu } from 'antd';
 
 import avatar from '@/assets/imgs/1.jpg';
@@ -8,7 +8,6 @@ import { menu } from '@/layouts/constant';
 import ss from './index.less';
 
 interface IProps {
-  isHidden?: boolean;
   tab?: string;
 }
 
@@ -26,9 +25,10 @@ const User = (props: { name?: string; desc?: string }) => {
 };
 
 const Header: React.FC<IProps> = (props) => {
-  const { tab, isHidden } = props;
+  const { tab } = props;
 
   const [currentTab, setCurrentTab] = useState<string>('Blog');
+  const isHidden = useSelector((store) => store.global.isHidden);
 
   useEffect(() => {
     if (tab) {
